@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notification</title>
+  <link rel="Stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="buttons">
+    <button onclick="showToast(successMsg)">Success</button>
+    <button onclick="showToast(errorMsg)" >Error</button>
+    <button onclick="showToast(invalidMsg)">Invalid</button>
+  </div>
+
+  <div id="toastBox"> </div>
+
+
+  <script>
+
+    let toastBox = document.getElementById('toastBox');
+    let successMsg = '<i>#</i> Successfully submitted';
+    let errorMsg = '<i>x</i> please fix the error';
+    let invalidMsg = '<i>!</i> Invalid input,check again';
+
+   function showToast(msg){
+      let toast = document.createElement('div');
+      toast.classList.add('toast');
+      toast.innerHTML = msg;
+      toastBox.appendChild(toast);
+
+
+      if(msg.includes('error')){
+        toast.classList.add('error');
+      }
+      if(msg.includes('Invalid')){
+        toast.classList.add('Invalid');
+      }
+
+        setTimeout(()=>{
+          toast.remove();
+        },6000)
+
+   }
+
+
+  </script>
+  
+</body>
+</html>
